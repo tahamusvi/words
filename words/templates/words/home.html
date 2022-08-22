@@ -32,29 +32,20 @@
   </br></br></br></br></br></br></br></br></br></br>
 
 
-    <a href="{% url 'words:home2' word.id %}">
-      <button class="btn backward">
-        <i class="fa fa-chevron-left"></i>
-      </button>
-    </a>
 
-    <a href="{% url 'words:home2' word.id %}">
+
+    <a href="{% url 'words:changeLearnCondition' word.id %}">
       <button class="btn period">
-        <i class="fa fa-history"></i>
-      </button>
-    </a>
-
-    <a href="{% url 'words:home2' word.id %}">
-      <button class="btn perfect">
         <i class="fa fa-check"></i>
       </button>
     </a>
 
-    <a href="{% url 'words:home2' word.id %}">
-      <button class="btn forward">
-      <i class="fa fa-chevron-right"></i>
-    </button>
+    <a href="{% url 'words:home' %}">
+      <button class="btn perfect">
+        <i class="fa fa-chevron-right"></i>
+      </button>
     </a>
+
 
 
   </div>

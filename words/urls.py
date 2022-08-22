@@ -8,5 +8,6 @@ app_name = "words"
 
 urlpatterns = [
     path('', home,name="home"),
-    path('words/<int:pk>', home,name="home2"),
+    path('changeLearnCondition/<int:pk>', changeLearnCondition,name="changeLearnCondition"),
+
 ]
