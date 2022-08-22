@@ -1,66 +1,65 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Good Wishes - 3D Carousel</title>
-  <!-- <link rel="stylesheet" href="./style.css"> -->
-  <link href="{% static 'words/style.css' %}" rel="stylesheet">
+  <title>CodePen - Neumorphism Playlist</title>
+  <link rel="stylesheet" href="{% static 'words/style.css' %}">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
-<div class="wrapper">
-            <div class="circular-slider">
-                <div class="card">
-                    <div class="content">
-                        👋<br>
-                        Hello World !
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        😇 <br>
-                        Be Nice !
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        🥗<br>
-                        Eat well !
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        🌱<br>
-                        Stay Healthy !
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        🌟<br>
-                        Shine Bright !
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="content">
-                        😄<br>
-                        Be Happy !
-                    </div>
-                </div>
-            </div>
-            <div class="info">
-                <div class="smile">: )</div>
-                <div class="name"></div>
-                <div class="msg">
-                    Swipe left or right
-                </div>
-            </div>
-        </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="main">
+  <div class="app">
+    <h5 class="text">LEARN NOW</h5>
+
+    <button class="btn arrow">
+      <i class="fa fa-arrow-left"></i>
+    </button>
+    <button class="btn bar">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="image">
+      <img src="{% static 'words/space.jpg' %}" style="width:200px">
+      <h2>{{word}}</h2>
+      </br></br>
+      <p>{{word.meaning}}</p>
+    </div>
+
+  </br></br></br></br></br></br></br></br></br></br>
+
+
+    <a href="{% url 'words:home2' word.id %}">
+      <button class="btn backward">
+        <i class="fa fa-chevron-left"></i>
+      </button>
+    </a>
+
+    <a href="{% url 'words:home2' word.id %}">
+      <button class="btn period">
+        <i class="fa fa-history"></i>
+      </button>
+    </a>
+
+    <a href="{% url 'words:home2' word.id %}">
+      <button class="btn perfect">
+        <i class="fa fa-check"></i>
+      </button>
+    </a>
+
+    <a href="{% url 'words:home2' word.id %}">
+      <button class="btn forward">
+      <i class="fa fa-chevron-right"></i>
+    </button>
+    </a>
+
+
+  </div>
+</div>
 <!-- partial -->
-  <script  src="{% static 'words/script.js' %}"></script>
 
 </body>
 </html>
