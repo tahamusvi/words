@@ -1,0 +1,26 @@
+{% load static %}
+
+<div class="content-section">
+ <div class="content-section-title">Installed</div>
+ <ul>
+  {% for gp in groups %}
+
+  <li class="adobe-product">
+   <div class="products">
+     <img class="list-img" src="{% static 'words/space.jpg' %}" alt="">
+    <p class="list-txt">{{gp}}</p>
+   </div>
+   <span class="status">
+    <span class="status-circle green"></span>
+    Updated</span>
+   <div class="button-wrapper">
+    <button class="content-button status-button open" ><a href="{% url 'words:home' gp.id %}" style="text-decoration:none;Color:white">Open</a></button>
+   </div>
+  </li>
+
+
+
+  {% endfor %}
+
+ </ul>
+</div>

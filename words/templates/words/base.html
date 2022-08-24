@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Glassmorphism-dashboard</title>
+  <link rel="stylesheet" href="{% static 'words/panel/style2.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<div class="app">
+
+ {% include 'words/base-elements/header.html' %}
+
+ <div class="wrapper">
+  {% include 'words/base-elements/warper.html' %}
+
+
+  <div class="main-container">
+   {% include 'words/base-elements/main-header.html' %}
+
+   {% block content %}{% endblock %}
+  </div>
+
+
+ </div>
+
+ <div class="overlay-app"></div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="{% static 'words/panel/script.js' %}"></script>
+
+</body>
+</html>

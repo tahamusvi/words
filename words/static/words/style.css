@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Karla:wght@300&display=swap");
 
 body {
-  background: #e0e0e0;
+  background: #DEE8F2;
   overflow-y: scroll;
   font-family: "Karla", sans-serif;
 }
@@ -17,7 +17,7 @@ body {
   width: 320px;
   height: 580px;
   border-radius: 40px;
-  background: #e0e0e0;
+  background: #DEE8F2;
   box-shadow: 11px 11px 39px #949494, -11px -11px 39px #ffffff;
 }
 .btn {
@@ -26,7 +26,7 @@ body {
   margin: 20px;
   outline: none;
   border: none;
-  background: #e0e0e0;
+  background: #DEE8F2;
   box-shadow: 5px 5px 10px #b6a9a9, -5px -5px 10px #ffffff;
   border-radius: 50%;
   font-size: 18px;
@@ -54,7 +54,7 @@ body {
   height: 220px;
   margin: 50px 50px;
   border-radius: 50%;
-  background: #e0e0e0;
+  background: #DEE8F2;
   box-shadow: 11px 11px 22px #a4a4a4, -11px -11px 22px #ffffff;
 }
 img {
@@ -74,7 +74,7 @@ p {
   height: 15px;
   border-radius: 30px;
   margin: 120px 30px;
-  background: #e0e0e0;
+  background: #DEE8F2;
   box-shadow: 7px 7px 14px #b8b8b8, -5px -5px 14px #ffffff;
 }
 .track:after {
@@ -89,11 +89,11 @@ p {
 .backward {
   position: absolute;
   margin: -70px 30px;
-  color: black;
 }
 .period {
   position: absolute;
   margin: -70px 100px;
+  color: red;
 }
 .perfect {
   position: absolute;

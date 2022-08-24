@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #DEE8F2;
+}
+
+body {
+  margin: 0;
+}
+
+nav {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  background: #DEE8F2;
+  transition: 0.3s;
+  overflow: hidden;
+}
+nav:hover {
+  width: 160px;
+  box-shadow: 4px 4px 4px #CFDBE8, 8px 8px 8px #CFDBE8;
+}
+nav ul {
+  position: relative;
+  width: 160px;
+  padding: 0;
+  margin: 0;
+  display: block;
+  list-style: none;
+}
+nav ul li {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 60px auto;
+  opacity: 0.4;
+  cursor: pointer;
+  transition: transform 0.1s;
+  user-select: none;
+}
+nav ul li:hover {
+  opacity: 1;
+}
+nav ul li:active {
+  transform: scale(0.9);
+}
+nav ul li i {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+}
+nav ul li p {
+  color: gray;
+  font-family: sans-serif;
+  align-self: center;
+  background-color: #354148;
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
+
+.material-icons.md-light {
+  background-color: #354148;
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+}
+
+#content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: calc(100% - 60px);
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, calc(50% - 20px));
+  grid-template-rows: repeat(2, calc(50% - 20px));
+  grid-gap: 40px;
+  padding: 20px;
+}
+
+.search,
+.data,
+.graph_container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  justify-self: center;
+  border-radius: 1em;
+  box-shadow: 4px 4px 4px #CFDBE8, 8px 8px 8px #CFDBE8, -4px -4px 4px #EDF2F8, -8px -8px 15px #EDF2F8;
+  padding: 20px;
+  background: #DEE8F2;
+}
+.search .title,
+.data .title,
+.graph_container .title {
+  font-size: 30px;
+  font-family: sans-serif;
+  background-color: #354148;
+  color: transparent;
+  text-shadow: 2px 2px 3px rgba(255, 255, 255, 0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  margin: 0;
+}
+
+.search {
+  display: grid;
+  grid-template-rows: 40px calc(100% - 80px);
+  grid-gap: 40px;
+  padding: 20px;
+}
+.search form {
+  position: relative;
+  width: 80%;
+  height: auto;
+  justify-self: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.search form input {
+  position: relative;
+  width: 100%;
+  padding: 10px 20px 10px 20px;
+  background: #DEE8F2;
+  border: 5px solid #DEE8F2;
+  border-radius: 1em;
+  outline: none;
+  font-family: sans-serif;
+  color: #354148;
+  box-shadow: 4px 4px 4px #CFDBE8, 8px 8px 8px #CFDBE8, -2px -2px 2px #EDF2F8, -6px -6px 8px #EDF2F8;
+  transition: 0.3s;
+}
+.search form input:focus {
+  box-shadow: 4px 4px 4px #CFDBE8, 8px 8px 8px #CFDBE8, -4px -4px 4px #EDF2F8, -8px -8px 15px #EDF2F8, 4px 4px 8px rgba(0, 0, 0, 0.02) inset, -4px -4px 8px rgba(0, 0, 0, 0.02) inset;
+}
+.search form button {
+  position: relative;
+  width: 200px;
+  height: 60px;
+  margin-top: 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #FF832C;
+  box-shadow: -4px 4px 15px rgba(255, 131, 44, 0.8);
+  text-transform: uppercase;
+  color: #DEE8F2;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.graph_container {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: repeat(2, calc(50% - 20px));
+  grid-template-rows: 40px calc(100% - 80px);
+  grid-gap: 40px;
+  padding: 20px;
+}
+.graph_container .title {
+  align-self: center;
+}
+.graph_container .first_graph,
+.graph_container .second_graph {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 1em;
+  box-shadow: 4px 4px 4px #CFDBE8, 8px 8px 8px #CFDBE8, -4px -4px 4px #EDF2F8, -8px -8px 15px #EDF2F8;
+  margin: 0 auto;
+}
+.graph_container .first_graph {
+  grid-column-start: 1;
+}
