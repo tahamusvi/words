@@ -66,18 +66,20 @@ def GpWords(request,pk):
     max = wordsGP.count()
     learned = wordsGP.filter(learn=False).count()
 
+    items = list(wordsGP)
+
     Conditon = True
     while(Conditon and ((learned!=0))):
-        QueryWord = wordsGP.get(id = random.randrange(1,max+1))
+        QueryWord = random.choice(items)
         if(QueryWord.learn == False):
             Conditon = False
 
 
 
-    if(learned==1):
+    if(learned==0):
         QueryWord = word(text = "END!",meaning="cool!",id=1000,gp=gp)
 
-    return render(request,'words/group.html',{'word':QueryWord})
+    return render(request,'words/group.html',{'word':QueryWord,'gp':gp})
 #-----------------------------------------------------------------
 def changeLearnCondition(request,pk):
     QueryWord = word.objects.get(id=pk)
