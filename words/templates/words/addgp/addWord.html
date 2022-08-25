@@ -1,0 +1,17 @@
+{% extends 'words/addgp/base.html' %}
+
+
+
+{% block title %}Add Word{% endblock %}
+
+
+{% block field %}
+
+  {{form.as_p}}
+
+
+
+{% endblock %}
+
+
+{% block button %}<a href="{% url 'words:panel' %}">go Home</a>{% endblock %}

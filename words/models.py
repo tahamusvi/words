@@ -2,7 +2,7 @@ from django.db import models
 
 class group(models.Model):
     title = models.CharField(max_length=30)
-    img = models.ImageField()
+    img = models.ImageField(null=True, blank=True)
     id = models.IntegerField(primary_key=True)
 
 

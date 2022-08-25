@@ -1,6 +1,10 @@
 from django.shortcuts import render
 from .models import *
 import random
+from .forms import *
+from django.shortcuts import redirect
+
+
 
 def home1(request):
     return render(request,'words/home.html')
@@ -27,11 +31,34 @@ def home(request,pk=0):
 
 #-----------------------------------------------------------------
 def panel(request):
-    groups = group.objects.all()
+    groups = group.objects.all().order_by("-id")
     return render(request,'words/panel.html',{'groups':groups})
 #-----------------------------------------------------------------
-# def profile(request):
-#     return render(request,'words/profile.html')
+def addGroup(request):
+    if request.method == 'POST':
+        form = GpForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            newgp = group(title = form.cleaned_data['title'],img = form.cleaned_data['img']).save()
+            gp = group.objects.get(title=form.cleaned_data['title'])
+            return redirect('words:addWord',gp.id)
+    else:
+        form = GpForm()
+    return render(request,'words/addgp/name-pic.html',{'form':form})
+#-----------------------------------------------------------------
+def addWord(request,pk):
+    if request.method == 'POST':
+        form = WordForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            newWord = word(text = form.cleaned_data['text'],meaning = form.cleaned_data['meaning'])
+            gp = group.objects.get(id=pk)
+            newWord.gp = gp
+            newWord.save()
+            return redirect('words:addWord',gp.id)
+    else:
+        form = WordForm()
+    return render(request,'words/addgp/addWord.html',{'form':form})
 #-----------------------------------------------------------------
 def GpWords(request,pk):
     gp = group.objects.get(id = pk)
