@@ -30,6 +30,9 @@ def panel(request):
     groups = group.objects.all()
     return render(request,'words/panel.html',{'groups':groups})
 #-----------------------------------------------------------------
+# def profile(request):
+#     return render(request,'words/profile.html')
+#-----------------------------------------------------------------
 def GpWords(request,pk):
     gp = group.objects.get(id = pk)
     wordsGP = gp.words.all()
@@ -47,7 +50,7 @@ def GpWords(request,pk):
     if(learned==1):
         QueryWord = word(text = "END!",meaning="cool!",id=1000,gp=gp)
 
-    return render(request,'words/home.html',{'word':QueryWord})
+    return render(request,'words/group.html',{'word':QueryWord})
 #-----------------------------------------------------------------
 def changeLearnCondition(request,pk):
     QueryWord = word.objects.get(id=pk)

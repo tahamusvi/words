@@ -1,0 +1,49 @@
+{% extends 'accounts/adminlte/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block titlemeta %}{% block title %}
+پروفایل کاربری
+{% endblock %}{% endblock %}
+{% block main %}
+<div class="col-md-12">
+          <!-- general form elements -->
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title mb-0 float-left">پروفایل کاربری</h3>
+            </div>
+            <div class="card-body">
+              <form  method="post" enctype="multipart/form-data"> {% csrf_token %}
+                <div class="row">
+                  <div class="col-6">
+                {{form.firstName|as_crispy_field}}
+                <br>
+                </div>
+                  <div class="col-6">
+                {{form.lastName|as_crispy_field}}
+                </div>
+                  <br><br>
+                  <div class="col-6">
+                {{form.phoneNumber|as_crispy_field}}
+                <br>
+                </div>
+                    <div class="col-6">
+                  {{form.is_active|as_crispy_field}}
+                  </div>
+                  <br><br><br>
+                    <div class="col-6">
+                  {{form.special_user|as_crispy_field}}
+                  </div>
+                    <div class="col-6">
+                  {{form.is_author|as_crispy_field}}
+                  </div>
+                  <div class="col-12">
+                    <label class="my-4">گذرواژه:<span>برای تغییر گذرواژه <a href="{% url 'password_change' %}">کلیک</a> نمایید.</span></label>
+                  </div>
+                </div>
+                    <button class="btn btn-success">ثبت</button>
+              </form>
+
+            </div>
+</div>
+{% endblock %}

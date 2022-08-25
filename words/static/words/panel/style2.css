@@ -320,7 +320,7 @@ body.light-mode .video-bg:before {
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
-  border: 1px solid var(--theme-color);
+  /* border: 0px solid var(--theme-color); */
 }
 
 .wide .header-menu,
@@ -489,7 +489,7 @@ body.light-mode .video-bg:before {
 
 .img-content {
   font-weight: 500;
-  font-size: 17px;
+  font-size: 25px;
   display: flex;
   align-items: center;
   margin: 0;
@@ -849,6 +849,7 @@ body.light-mode .video-bg:before {
 }
 .app-card + .app-card {
   margin-left: 20px;
+  margin: 10px;
 }
 .app-card span {
   display: flex;

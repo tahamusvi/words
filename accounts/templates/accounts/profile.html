@@ -1,0 +1,46 @@
+{% extends 'words/base.html' %}
+
+
+
+
+
+
+
+
+
+{% block content %}
+<div class="content-wrapper">
+
+  <div class="content-section">
+   <div class="content-section-title">Profile</div>
+   <div class="apps-card">
+
+
+
+     <div class="app-card">
+      <span>
+       firstName
+      </span>
+      <div class="app-card__subtext">{{form.firstName}}</div>
+     </div>
+
+     <div class="app-card">
+      <span>
+       lastName
+      </span>
+      <div class="app-card__subtext">{{form.lastName}}</div>
+     </div>
+
+     <div class="app-card">
+      <span>
+       phoneNumber
+      </span>
+      <div class="app-card__subtext">{{form.phoneNumber}}</div>
+     </div>
+
+       <button class="content-button status-button open">Submit</button>
+
+</div>
+
+
+{% endblock %}

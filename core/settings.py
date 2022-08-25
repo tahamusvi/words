@@ -3,6 +3,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3xl-(e5s=v5(v+=jdzu^+&8k%*&w63rmx(&!=q!r8+t-mul#k@'
 DEBUG = True
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = 'accounts.User'
 
 
 # Application definition
@@ -15,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'words',
+    'accounts'
 ]
 
 MIDDLEWARE = [

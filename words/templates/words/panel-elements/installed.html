@@ -1,13 +1,13 @@
 {% load static %}
 
 <div class="content-section">
- <div class="content-section-title">Installed</div>
+ <div class="content-section-title">Group of Words</div>
  <ul>
   {% for gp in groups %}
 
   <li class="adobe-product">
    <div class="products">
-     <img class="list-img" src="{% static 'words/space.jpg' %}" alt="">
+     <img class="list-img" src="{{gp.img}}" alt="">
     <p class="list-txt">{{gp}}</p>
    </div>
    <span class="status">
