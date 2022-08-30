@@ -64,14 +64,16 @@ def GpWords(request,pk):
     gp = group.objects.get(id = pk)
     wordsGP = gp.words.all()
     max = wordsGP.count()
-    learned = wordsGP.filter(learn=False).count()
+
+    w_id = [w.id for w in wordsGP if w.learn()]
+    learned = wordsGP.filter(id__in=w_id).count()
 
     items = list(wordsGP)
 
     Conditon = True
     while(Conditon and ((learned!=0))):
         QueryWord = random.choice(items)
-        if(QueryWord.learn == False):
+        if(QueryWord.learn() == False):
             Conditon = False
 
 
@@ -83,7 +85,7 @@ def GpWords(request,pk):
 #-----------------------------------------------------------------
 def changeLearnCondition(request,pk):
     QueryWord = word.objects.get(id=pk)
-    QueryWord.learn = True
+    QueryWord.learned()
     QueryWord.save()
 
     return GpWords(request,QueryWord.gp.id)

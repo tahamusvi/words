@@ -2,18 +2,19 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, AbstractUser
 from .managers import *
 from django.utils import timezone
+from leitner.models import Leitner
 # ----------------------------------------------------------------------------------------------------------------------------
 class User(AbstractBaseUser):
     phoneNumber = models.CharField(unique=True, max_length=11)
     firstName = models.CharField(max_length=100, null=True, blank=True)
     lastName = models.CharField(max_length=100, null=True, blank=True)
     is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
-    special_user = models.DateTimeField(default=timezone.now, verbose_name="کاربر ویژه تا")
+    # is_active = models.BooleanField(default=True)
+    # special_user = models.DateTimeField(default=timezone.now, verbose_name="کاربر ویژه تا")
     Avatar = models.ImageField(upload_to="images/Avatar",blank=True,null=True)
-    is_author = models.BooleanField(default = False, verbose_name = "وضعیت نویسندگی")
 
-    code = models.IntegerField(blank=True,null=True)
+    # code = models.IntegerField(blank=True,null=True)
+    leitner = models.OneToOneField(Leitner,on_delete = models.CASCADE,blank=True,null=True)
 
 
     USERNAME_FIELD = 'phoneNumber'
@@ -34,11 +35,11 @@ class User(AbstractBaseUser):
     def name(self):
         return str(self.firstName) + " " + str(self.lastName)
 
-    def is_special_user(self):
-        if self.special_user > timezone.now():
-            return True
-        else:
-            return False
+    # def is_special_user(self):
+    #     if self.special_user > timezone.now():
+    #         return True
+    #     else:
+    #         return False
 
-    is_special_user.boolean = True
-    is_special_user.short_description = "وضعیت کاربر ویژه"
+    # is_special_user.boolean = True
+    # is_special_user.short_description = "وضعیت کاربر ویژه"

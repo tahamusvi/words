@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['phoneNumber','firstName','lastName','is_active','special_user','is_author']
+        fields = ['phoneNumber','firstName','lastName']
 
 
     def __init__(self, *arg,**kwargs):
@@ -16,9 +16,9 @@ class ProfileForm(forms.ModelForm):
         if not user.is_staff:
             self.fields['phoneNumber'].disabled = True
             self.fields['phoneNumber'].help_text = False
-            self.fields['is_active'].disabled = True
-            self.fields['special_user'].disabled = True
-            self.fields['is_author'].disabled = True
+            # self.fields['is_active'].disabled = True
+            # self.fields['special_user'].disabled = True
+            # self.fields['is_author'].disabled = True
 
 
 
