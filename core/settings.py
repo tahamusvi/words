@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'words',
     'accounts',
     'leitner',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
