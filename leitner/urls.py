@@ -8,4 +8,5 @@ app_name = "leitner"
 
 urlpatterns = [
     path('test/', test,name="test"),
+    path('addLword/<int:id>/', addLword,name="addLword"),
 ]

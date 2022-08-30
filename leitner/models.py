@@ -69,6 +69,9 @@ class Lword(models.Model):
     def UpLevel(self):
         self.status = str(int(self.status)+1)
 
+    def DownLevel(self):
+        self.status = str(1)
+
 
     def learned(self):
         self.cycle = timezone.now

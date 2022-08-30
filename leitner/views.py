@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Leitner
+from .models import *
+from words.models import *
 
 def test(request):
     l = Leitner.objects.get(id=1)
@@ -10,3 +11,10 @@ def test(request):
     # lword.save()
 
     return HttpResponse(lword.cycle.day)
+
+
+def addLword(request,id):
+    w = word.objects.get(id=id)
+    lw = Lword(words = w,status='1',leitner=request.user.leitner).save()
+
+    return HttpResponse(lw)
