@@ -63,18 +63,14 @@ def addWord(request,pk):
 def GpWords(request,pk):
     gp = group.objects.get(id = pk)
     wordsGP = gp.words.all()
-    max = wordsGP.count()
-
-    w_id = [w.id for w in wordsGP if w.learn()]
-    learned = wordsGP.filter(id__in=w_id).count()
+    learned = wordsGP.count()
 
     items = list(wordsGP)
 
+    QueryWord = random.choice(items)
     Conditon = True
-    while(Conditon and ((learned!=0))):
+    while(request.user.leitner.search(QueryWord)):
         QueryWord = random.choice(items)
-        if(QueryWord.learn() == False):
-            Conditon = False
 
 
 

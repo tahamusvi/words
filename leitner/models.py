@@ -8,6 +8,13 @@ class Leitner(models.Model):
 
     def __str__(self):
         return self.title
+
+    def search(self,text):
+        for word in self.lword.all():
+            if(text == word):
+                return True
+        else:
+            return False
 #-----------------------------------------------------------------
 class Lword(models.Model):
     status_word = (
@@ -65,6 +72,7 @@ class Lword(models.Model):
 
     def __str__(self):
         return self.words.text
+
 
     def UpLevel(self):
         self.status = str(int(self.status)+1)
