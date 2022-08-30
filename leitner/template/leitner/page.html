@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Glassmorphism profile design</title>
+  <link rel="stylesheet" href="{% static 'words/style2.css'%}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="card">
+  <div class="p-profile">
+   <img src="{{gp.img.url}}">
+  </div>
+
+  <div class="name">
+    <h2>{{word}}</h2>
+    </br></br></br></br>
+    <p>{{word.meaning}}</p>
+  </div>
+
+
+
+
+  </br></br></br></br>
+
+
+  <div class="button">
+    {% if word.text != "END!" %}
+    <button><a href="{% url 'words:home' word.gp.id %}" style="text-decoration:none;Color:white">I dont know</a></button>
+    <button><a href="{% url 'words:changeLearnCondition' word.id %}" style="text-decoration:none;Color:blue">I Know</a></button>
+    {% else %}
+    <button style="margin-left: 65px;"><a href="{% url 'words:panel' %}" style="text-decoration:none;Color:white">Return Home</a></button>
+    {% endif %}
+  </div>
+
+  <!-- <div class="infos">
+
+     <div class="Follower">
+      <h4>31</h4>
+      <p>Post</p>
+    </div>
+
+    <div class="Follower">
+      <h4>25k</h4>
+      <p>Followers</p>
+    </div>
+
+    <div class="following">
+      <h4>34</h4>
+      <p>Following</p>
+    </div>
+  </div>
+
+  <div class="more">
+    <button>Visit Profile</button>
+  </div> -->
+
+</div>
+
+<div class="circle1"></div>
+<div class="circle2"></div>
+<!-- partial -->
+
+</body>
+</html>
