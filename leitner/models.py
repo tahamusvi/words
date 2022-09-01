@@ -11,10 +11,9 @@ class Leitner(models.Model):
 
     def search(self,text):
         for word in self.lword.all():
-            if(text == word):
+            if(str(text) == word.words.text):
                 return True
-        else:
-            return False
+        return False
 #-----------------------------------------------------------------
 class Lword(models.Model):
     status_word = (

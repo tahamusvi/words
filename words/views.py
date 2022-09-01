@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from leitner.models import *
 import random
 from .forms import *
 from django.shortcuts import redirect
@@ -68,8 +69,8 @@ def GpWords(request,pk):
     items = list(wordsGP)
 
     QueryWord = random.choice(items)
-    Conditon = True
-    while(request.user.leitner.search(QueryWord)):
+
+    while (request.user.leitner.search(QueryWord)):
         QueryWord = random.choice(items)
 
 
@@ -81,8 +82,9 @@ def GpWords(request,pk):
 #-----------------------------------------------------------------
 def changeLearnCondition(request,pk):
     QueryWord = word.objects.get(id=pk)
-    QueryWord.learned()
-    QueryWord.save()
+    lt = request.user.leitner
+    lw = Lword(leitner=lt,words=QueryWord).save()
+    lt.save()
 
     return GpWords(request,QueryWord.gp.id)
 #-----------------------------------------------------------------
