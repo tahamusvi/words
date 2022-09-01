@@ -21,14 +21,34 @@ def addLword(request,id):
     return HttpResponse(lw)
 
 
-
+#-----------------------------------------------------------------
 def LwShow(request):
     lws = request.user.leitner.lword.all()
-    items = list(lws)
 
-    print(lws)
+    w_id = [w.id for w in lws if w.reviewTime()]
 
-    QueryWord = random.choice(items)
+    items = list(lws.filter(id__in=w_id))
+
+    try:
+        QueryWord = random.choice(items)
+    except IndexError :
+        QueryWord = None
 
 
-    return render(request,'leitner/lw.html',{'word':QueryWord.words})
+
+
+    return render(request,'leitner/lw.html',{'QueryWord':QueryWord})
+#-----------------------------------------------------------------
+def WordLearned(request,id):
+    lw = request.user.leitner.lword.get(id=id)
+    lw.UpLevel()
+    lw.save()
+
+    return LwShow(request)
+#-----------------------------------------------------------------
+def WordUnLearned(request,id):
+    lw = request.user.leitner.lword.get(id=id)
+    lw.DownLevel()
+    lw.save()
+
+    return LwShow(request)

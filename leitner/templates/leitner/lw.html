@@ -15,9 +15,19 @@
   </div>
 
   <div class="name">
-    <h2>{{word}}</h2>
-    </br></br></br></br>
-    <p>{{word.meaning}}</p>
+    {% if QueryWord %}
+    <h2>{{QueryWord.words}}</h2>
+
+    <p>{{QueryWord.words.meaning}}</p>
+    <p>Level : {{QueryWord.status}}</p>
+    </br></br></br>
+    {% else %}
+    <h2>END!</h2>
+
+    <p>cool!</p>
+    <p>perfect!</p>
+    </br></br></br>
+    {% endif %}
   </div>
 
 
@@ -27,9 +37,9 @@
 
 
   <div class="button">
-    {% if word.text != "END!" %}
-    <button><a href="" style="text-decoration:none;Color:white">I dont know</a></button>
-    <button><a href="" style="text-decoration:none;Color:blue">I Know</a></button>
+    {% if QueryWord %}
+    <button><a href="{% url 'leitner:WordUnLearned' QueryWord.id %}" style="text-decoration:none;Color:white">I dont know</a></button>
+    <button><a href="{% url 'leitner:WordLearned' QueryWord.id %}" style="text-decoration:none;Color:blue">I Know</a></button>
     {% else %}
     <button style="margin-left: 65px;"><a href="{% url 'words:panel' %}" style="text-decoration:none;Color:white">Return Home</a></button>
     {% endif %}

@@ -14,7 +14,7 @@ class User(AbstractBaseUser):
     Avatar = models.ImageField(upload_to="images/Avatar",blank=True,null=True)
 
     # code = models.IntegerField(blank=True,null=True)
-    leitner = models.OneToOneField(Leitner,on_delete = models.CASCADE,blank=True,null=True)
+    leitner = models.OneToOneField(Leitner,on_delete = models.CASCADE,blank=True,null=True,related_name="user")
 
 
     USERNAME_FIELD = 'phoneNumber'

@@ -7,7 +7,7 @@ class Leitner(models.Model):
     title = models.CharField(max_length=30)
 
     def __str__(self):
-        return self.title
+        return self.user.__str__() + " - " + self.title
 
     def search(self,text):
         for word in self.lword.all():
@@ -28,7 +28,7 @@ class Lword(models.Model):
     )
     words = models.ForeignKey(word, on_delete=models.CASCADE,related_name="Lword")
     cycle = models.DateTimeField(default=timezone.now)
-    status = models.CharField(max_length=1,choices = status_word)
+    status = models.CharField(max_length=1,choices = status_word,default='1')
     leitner = models.ForeignKey(Leitner, on_delete=models.CASCADE,related_name="lword")
 
 
@@ -76,10 +76,11 @@ class Lword(models.Model):
 
     def UpLevel(self):
         self.status = str(int(self.status)+1)
+        self.cycle = timezone.now()
 
     def DownLevel(self):
         self.status = str(1)
-
+        self.cycle = timezone.now()
 
     def learned(self):
         self.cycle = timezone.now
