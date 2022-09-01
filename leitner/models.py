@@ -31,6 +31,7 @@ class Lword(models.Model):
     leitner = models.ForeignKey(Leitner, on_delete=models.CASCADE,related_name="lword")
 
 
+
     def learn(self):
         if self.cycle > timezone.now():
             return False

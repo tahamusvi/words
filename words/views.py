@@ -64,18 +64,25 @@ def addWord(request,pk):
 def GpWords(request,pk):
     gp = group.objects.get(id = pk)
     wordsGP = gp.words.all()
-    learned = wordsGP.count()
 
     items = list(wordsGP)
+    amount = 0
+
+    for w in wordsGP:
+        if(request.user.leitner.search(w)):
+            pass
+        else:
+            amount+=1
+
 
     QueryWord = random.choice(items)
 
-    while (request.user.leitner.search(QueryWord)):
+    while (request.user.leitner.search(QueryWord)) and (amount!=0):
         QueryWord = random.choice(items)
 
 
 
-    if(learned==0):
+    if(amount==0):
         QueryWord = word(text = "END!",meaning="cool!",id=1000,gp=gp)
 
     return render(request,'words/group.html',{'word':QueryWord,'gp':gp})
@@ -83,7 +90,8 @@ def GpWords(request,pk):
 def changeLearnCondition(request,pk):
     QueryWord = word.objects.get(id=pk)
     lt = request.user.leitner
-    lw = Lword(leitner=lt,words=QueryWord).save()
+    if not (lt.search(QueryWord)):
+        lw = Lword(leitner=lt,words=QueryWord).save()
     lt.save()
 
     return GpWords(request,QueryWord.gp.id)
