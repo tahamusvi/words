@@ -1,0 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Electrolize);
+body {
+  margin: 0;
+  padding: 0;
+ font-family: 'Electrolize';
+  font-size: 2em;
+  text-transform: ;
+  background-color: hsla(0, 0%, 10%, 1);
+  color: hsla(0, 0%, 93%, 1);
+  width: 100%;
+  overflow: hidden;
+}
+
+p {
+  width: 100%;
+  text-align: center;
+  margin: 15% auto;
+}
+
+button {
+  background: transparent;
+  border: 1px solid hsla(0, 0%, 0%, .8);
+  padding: .5em;
+  width: 5em;
+  font-size: 60%;
+}

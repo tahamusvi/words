@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <title>CodePen - Glassmorphism profile design</title>
   <link rel="stylesheet" href="{% static 'words/style2.css'%}">
+  <link rel="stylesheet" href="{% static 'leitner/shuf.css'%}">
 
 </head>
 <body>
@@ -18,14 +19,16 @@
     {% if QueryWord %}
     <h2>{{QueryWord.words}}</h2>
 
-    <p>{{QueryWord.words.meaning}}</p>
     <p>Level : {{QueryWord.status}}</p>
-    </br></br></br>
+    <p id="anim"></p>
+
+
     {% else %}
     <h2>END!</h2>
 
-    <p>cool!</p>
-    <p>perfect!</p>
+
+
+    <!-- <p>perfect!</p> -->
     </br></br></br>
     {% endif %}
   </div>
@@ -34,13 +37,16 @@
 
 
   </br></br></br></br>
-
-
+{% if QueryWord %}
+<div class="button" style="margin-left: 70px;">
+  <button id='btn'>Show meaning</button>
+  </div>
   <div class="button">
-    {% if QueryWord %}
+
     <button><a href="{% url 'leitner:WordUnLearned' QueryWord.id %}" style="text-decoration:none;Color:white">I dont know</a></button>
     <button><a href="{% url 'leitner:WordLearned' QueryWord.id %}" style="text-decoration:none;Color:blue">I Know</a></button>
     {% else %}
+    <div class="button">
     <button style="margin-left: 65px;"><a href="{% url 'words:panel' %}" style="text-decoration:none;Color:white">Return Home</a></button>
     {% endif %}
   </div>
@@ -72,6 +78,49 @@
 <div class="circle1"></div>
 <div class="circle2"></div>
 <!-- partial -->
+
+
+{% include 'leitner/shuff.html' %}
+
+<script>
+  var $ = function(id) {
+  return document.getElementById(id);
+};
+var inc = 0;
+var out = 0;
+var str = "{{QueryWord.words.meaning}}";
+var chars = 'ضصثقفغعهخحجچشسیبلاتنمکگظطزرذدپو';
+var t;
+
+var anim = function() {
+  inc++;
+  if (inc % 7 === 0 && out < str.length) {
+    $('anim').appendChild(document.createTextNode(str[out]));
+    out++;
+  } else if (out >= str.length) {
+    $('shuffle').innerHTML = '';
+    removeInterval(t);
+  }
+  $('shuffle').innerHTML =
+    chars[Math.floor(Math.random() * chars.length)];
+};
+
+
+
+function show() {
+  t = setInterval(anim, 30);
+  $('anim').innerHTML = '';
+
+}
+
+//Do it again
+function reload() {
+  window.location.href = window.location.href;
+}
+document.getElementById('btn').onclick = show;
+
+</script>
+
 
 </body>
 </html>

@@ -22,7 +22,7 @@ def addLword(request,id):
 
 
 #-----------------------------------------------------------------
-def LwShow(request):
+def ReviewLeitner(request):
     lws = request.user.leitner.lword.all()
 
     w_id = [w.id for w in lws if w.reviewTime()]
@@ -44,11 +44,11 @@ def WordLearned(request,id):
     lw.UpLevel()
     lw.save()
 
-    return LwShow(request)
+    return ReviewLeitner(request)
 #-----------------------------------------------------------------
 def WordUnLearned(request,id):
     lw = request.user.leitner.lword.get(id=id)
     lw.DownLevel()
     lw.save()
 
-    return LwShow(request)
+    return ReviewLeitner(request)
