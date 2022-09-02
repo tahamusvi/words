@@ -11,6 +11,11 @@ def home1(request):
     return render(request,'words/home.html')
 
 #-----------------------------------------------------------------
+def YourGp(request):
+
+    return render(request,'words/YourGp.html')
+
+#-----------------------------------------------------------------
 def home(request,pk=0):
     max = word.objects.all().count()
     learned = word.objects.filter(learn=False).count()

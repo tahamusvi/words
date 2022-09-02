@@ -11,6 +11,7 @@ urlpatterns = [
     path('addWord/<int:pk>/', addWord,name="addWord"),
     path('addGroup/', addGroup,name="addGroup"),
     path('<int:pk>/', GpWords,name="home"),
+    path('YourGp/', YourGp,name="YourGp"),
     # path('GpWords/<int:pk>/', GpWords,name="GpWords"),
     path('changeLearnCondition/<int:pk>', changeLearnCondition,name="changeLearnCondition"),
 

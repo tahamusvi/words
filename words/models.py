@@ -1,10 +1,12 @@
 from django.db import models
 from django.utils import timezone
+from core.settings import AUTH_USER_MODEL as User
 
 class group(models.Model):
     title = models.CharField(max_length=30)
     img = models.ImageField(null=True, blank=True)
     id = models.IntegerField(primary_key=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE,related_name="groups")
 
 
     def __str__(self):
