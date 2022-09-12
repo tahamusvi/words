@@ -1,0 +1,40 @@
+{% extends 'words/base.html' %}
+
+
+
+{% block content %}
+<div class="content-wrapper">
+
+
+  <div class="content-section">
+   <div class="content-section-title">Group of Words</div>
+   <ul>
+    {% for gp in groups %}
+
+    <li class="adobe-product">
+     <div class="products">
+       <img class="list-img" src="{{gp.img.url}}" alt="">
+      <p class="list-txt">{{gp}}</p>
+     </div>
+     <span class="status">
+      <span class="status-circle green"></span>
+      Updated</span>
+     <div class="button-wrapper">
+       <button class="content-button status-button open" ><a href="{% url 'words:addWord' gp.id %}" style="text-decoration:none;Color:white">Open</a></button>
+      <button class="content-button status-button open" ><a href="{% url 'words:home' gp.id %}" style="text-decoration:none;Color:white">Open</a></button>
+     </div>
+    </li>
+
+
+
+    {% endfor %}
+
+   </ul>
+  </div>
+
+
+
+</div>
+
+
+{% endblock %}

@@ -12,8 +12,9 @@ def home1(request):
 
 #-----------------------------------------------------------------
 def YourGp(request):
-
-    return render(request,'words/YourGp.html')
+    gps = request.user.groups.all()
+    print(gps)
+    return render(request,'words/yourGp/YourGp.html',{'groups':gps})
 
 #-----------------------------------------------------------------
 def home(request,pk=0):
