@@ -15,14 +15,17 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 
 #----------------------------------------------------------------------------------------------
-# class Login(LoginView):
-#     def get_success_url(self):
-#         user = self.request.user
-#
-#         if user.is_staff or user.is_author:
-#             return reverse_lazy('account:panelHome')
-#         else:
-#             return reverse_lazy('account:profile')
+class Login(LoginView):
+    template_name = "accounts/Login.html"
+    def get_success_url(self):
+        user = self.request.user
+        return reverse_lazy('words:panel')
+
+
+        # if user.is_staff or user.is_author:
+        #     return reverse_lazy('account:panelHome')
+        # else:
+        #     return reverse_lazy('account:profile')
 #----------------------------------------------------------------------------------------------
 class Profile(UpdateView):
     form_class = forms.ProfileForm

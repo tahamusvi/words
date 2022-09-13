@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Login Form with floating placeholder and light button</title>
+  <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="login-box">
+  <h2>Login</h2>
+  <form method="post">{% csrf_token %}
+    <div class="user-box">
+      <input type="text" name="" required="">
+      <label>Username</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="" required="">
+      <label>Password</label>
+    </div>
+    <a>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <button class="btn">
+        Submit
+      </button>
+    </a>
+
+  </form>
+</div>
+<!-- partial -->
+
+</body>
+</html>
