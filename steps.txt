@@ -1,2 +1,2 @@
-1.login
+1.logout
 2.signup

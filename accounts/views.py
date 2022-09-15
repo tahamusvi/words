@@ -22,6 +22,11 @@ from django.contrib import messages
 from .models import User
 
 #----------------------------------------------------------------------------------------------
+def logout(request):
+    lgo(request)
+    return redirect('words:panel')
+
+#----------------------------------------------------------------------------------------------
 def Login(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)

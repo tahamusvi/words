@@ -5,6 +5,11 @@
  <div class="menu-circle"></div>
  <div class="header-menu">
   <a class="menu-link is-active" href="{% url 'words:panel' %}">Home</a>
+  {% if request.user.name %}
+  <a class="menu-link " href="{% url 'accounts:logout' %}">logout</a>
+  {% else %}
+  <a class="menu-link " href="{% url 'accounts:Login' %}">login</a>
+  {% endif %}
   <!-- <a class="menu-link notify" href="#">Your Groups</a>
   <a class="menu-link" href="{% url 'accounts:profile' %}">Profile</a> -->
   <!-- <a class="menu-link notify" href="#">Market</a> -->
