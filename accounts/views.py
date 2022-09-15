@@ -13,22 +13,37 @@ from django.views.generic import (
 from accounts.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
+from django.shortcuts import render,redirect
+from .forms import *
+from  django.contrib.auth import authenticate
+from  django.contrib.auth import logout as lgo
+from  django.contrib.auth import login as lg
+from django.contrib import messages
+from .models import User
 
 #----------------------------------------------------------------------------------------------
-class Login(LoginView):
-    template_name = "accounts/Login.html"
-    def get_success_url(self):
-        user = self.request.user
-        return reverse_lazy('words:panel')
+def Login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
+        print("ok")
+        if form.is_valid():
+            print("ok2")
+            cd = form.cleaned_data
+            user = authenticate(request,username=cd['username'],password=cd['password'])
+            if user is not None:
+                lg(request,user)
+                messages.success(request,'you logged in successfully','success')
+                return redirect('words:panel')
+            else:
+                messages.error(request,'username or password is wrong','alert')
+    else:
+        form = UserLoginForm
+    return render(request,"accounts/Login.html",{'form':form})
 
 
-        # if user.is_staff or user.is_author:
-        #     return reverse_lazy('account:panelHome')
-        # else:
-        #     return reverse_lazy('account:profile')
 #----------------------------------------------------------------------------------------------
 class Profile(UpdateView):
-    form_class = forms.ProfileForm
+    form_class = ProfileForm
     template_name = "accounts/Profile.html"
     model = User
     success_url = reverse_lazy('words:home')

@@ -1,8 +1,9 @@
 from django import forms
-from .models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import *
+from django.contrib.auth.forms import ReadOnlyPasswordHashField
 
-
+#------------------------------------------------------------------------------------------------
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
@@ -19,12 +20,8 @@ class ProfileForm(forms.ModelForm):
             # self.fields['is_active'].disabled = True
             # self.fields['special_user'].disabled = True
             # self.fields['is_author'].disabled = True
-
-
-
-
-class SignupForm(UserCreationForm):
-    email = forms.EmailField(max_length=200)
-    class Meta:
-        model = User
-        fields = ('phoneNumber', 'email', 'password1', 'password2')
+#------------------------------------------------------------------------------------------------
+class UserLoginForm(forms.Form):
+    username = forms.CharField(max_length=40)
+    password = forms.CharField(max_length=40)
+#------------------------------------------------------------------------------------------------
