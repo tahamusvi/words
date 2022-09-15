@@ -6,8 +6,8 @@ from leitner.models import Leitner
 # ----------------------------------------------------------------------------------------------------------------------------
 class User(AbstractBaseUser):
     phoneNumber = models.CharField(unique=True, max_length=11)
-    firstName = models.CharField(max_length=100, null=True, blank=True)
-    lastName = models.CharField(max_length=100, null=True, blank=True)
+    # firstName = models.CharField(max_length=100, null=True, blank=True)
+    # lastName = models.CharField(max_length=100, null=True, blank=True)
     is_admin = models.BooleanField(default=False)
     # is_active = models.BooleanField(default=True)
     # special_user = models.DateTimeField(default=timezone.now, verbose_name="کاربر ویژه تا")
@@ -21,7 +21,7 @@ class User(AbstractBaseUser):
     objects = MyUserManager()
 
     def __str__(self):
-        return str(self.firstName) + " " + str(self.lastName)
+        return str(self.phoneNumber)
 
     def has_perm(self, perm, obj=None):
         return True
@@ -33,7 +33,7 @@ class User(AbstractBaseUser):
         return self.is_admin
 
     def name(self):
-        return str(self.firstName) + " " + str(self.lastName)
+        return str(self.phoneNumber) 
 
     # def is_special_user(self):
     #     if self.special_user > timezone.now():

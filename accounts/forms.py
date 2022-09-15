@@ -7,7 +7,7 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['phoneNumber','firstName','lastName']
+        fields = ['phoneNumber']
 
 
     def __init__(self, *arg,**kwargs):
