@@ -3,14 +3,14 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Login Form with floating placeholder and light button</title>
+  <title>..</title>
   <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="login-box">
-  <h2>Login</h2>
+  <h2>Sign up</h2>
   <form method="post">{% csrf_token %}
     <div class="user-box">
       <input type="text" name="username" required="">
@@ -19,6 +19,10 @@
     <div class="user-box">
       <input type="password" name="password" required="">
       <label>Password</label>
+    </div>
+    <div class="user-box">
+      <input type="password" name="password2" required="">
+      <label>Password Confirm</label>
     </div>
 
     <a>
@@ -31,14 +35,7 @@
       </button>
     </a>
 
-<a href="{% url 'accounts:SignUp' %}" style="text-decoration:none;Color:white">SignUp</a>
-
-
-
   </form>
-
-
-
 </div>
 <!-- partial -->
 

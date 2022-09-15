@@ -20,21 +20,17 @@ from  django.contrib.auth import logout as lgo
 from  django.contrib.auth import login as lg
 from django.contrib import messages
 from .models import User
-
 #----------------------------------------------------------------------------------------------
 def logout(request):
     lgo(request)
     return redirect('words:panel')
-
 #----------------------------------------------------------------------------------------------
 def Login(request):
     if request.method == 'POST':
         form = UserLoginForm(request.POST)
-        print("ok")
         if form.is_valid():
-            print("ok2")
             cd = form.cleaned_data
-            user = authenticate(request,username=cd['username'],password=cd['password'])
+            user = authenticate(request,phoneNumber=cd['username'],password=cd['password'])
             if user is not None:
                 lg(request,user)
                 messages.success(request,'you logged in successfully','success')
@@ -44,7 +40,23 @@ def Login(request):
     else:
         form = UserLoginForm
     return render(request,"accounts/Login.html",{'form':form})
-
+#----------------------------------------------------------------------------------------------
+def SignUp(request):
+    if request.method == 'POST':
+        form = UserSignUpForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            if(cd['password']==cd['password2']):
+                user = User(phoneNumber=cd['username'])
+                user.set_password(cd['password'])
+                user.save()
+                lg(request,user)
+                return redirect('words:panel')
+            else:
+                messages.error(request,'username or password is wrong','alert')
+    else:
+        form = UserSignUpForm
+    return render(request,"accounts/signup.html",{'form':form})
 
 #----------------------------------------------------------------------------------------------
 class Profile(UpdateView):
