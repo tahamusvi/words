@@ -46,7 +46,7 @@ def addGroup(request):
         form = GpForm(request.POST, request.FILES)
 
         if form.is_valid():
-            newgp = group(title = form.cleaned_data['title'],img = form.cleaned_data['img']).save()
+            newgp = group(title = form.cleaned_data['title'],img = form.cleaned_data['img'],author=request.user).save()
             gp = group.objects.get(title=form.cleaned_data['title'])
             return redirect('words:addWord',gp.id)
     else:
